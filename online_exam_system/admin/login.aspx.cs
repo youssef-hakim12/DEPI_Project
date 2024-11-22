@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
 
-public partial class admin_login : System.Web.UI.Page
+public partial class login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -23,9 +23,9 @@ public partial class admin_login : System.Web.UI.Page
 
             using (SqlConnection con = new SqlConnection(s))
             {
-                SqlCommand cmd = new SqlCommand("spAdminlogin", con);
+                SqlCommand cmd = new SqlCommand("spUserslogin", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@admin_email", txt_email.Text);
+                cmd.Parameters.AddWithValue("@user_email", txt_email.Text);
                 cmd.Parameters.AddWithValue("@password", txt_pass.Text);
                 try
                 {
@@ -35,16 +35,16 @@ public partial class admin_login : System.Web.UI.Page
                     {
                         if (chk_remember.Checked)
                         {
-                            HttpCookie user = new HttpCookie("admin_cookies"); //creating cookie object where user_cookies is cookie name
-                            user["adminemail"] = txt_email.Text; // cookie content
+                            HttpCookie user = new HttpCookie("user_cookies"); //creating cookie object where user_cookies is cookie name
+                            user["Useremail"] = txt_email.Text; // cookie content
                             user.Expires = DateTime.Now.AddYears(3); // give the time/duration of cookie
                             Response.Cookies.Add(user); // it gives the response in browser
                         }
                         else
                         {
-                            Session["adminemail"] = txt_email.Text;
+                            Session["Useremail"] = txt_email.Text;
                         }
-                        Response.Redirect("~/admin/Index.aspx");
+                        Response.Redirect("index.aspx");
                     }
                     else
                     {
@@ -65,6 +65,10 @@ public partial class admin_login : System.Web.UI.Page
             pnl_warning.Visible = true;
             lbl_warning.Text = "Please fill all the requirements";
         }
-
+        
     }
+
+
 }
+
+

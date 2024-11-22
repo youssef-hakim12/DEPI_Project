@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="admin_login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="login" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,9 +11,9 @@
     <meta name="author" content="">
     <title>Login - Online exam sytem</title>
     <!-- Bootstrap core CSS-->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for login-->
-    <link href="../assets/css/custom.css" rel="stylesheet">
+    <link href="assets/css/custom.css" rel="stylesheet">
 </head>
 
 <body class="bg-dark">
@@ -58,6 +58,7 @@
                     </div>
                     <asp:Button ID="btn_login" runat="server" Text="Log In" CssClass="btn btn-primary btn-block" OnClick="btn_login_Click" />
                     <div class="text-center">
+                        <a class="d-block small mt-3" href="register.aspx">Register an Account</a>
                         <a class="d-block small" href="forgot-password.aspx">Forgot Password?</a>
                     </div>
                 </form>
@@ -68,3 +69,4 @@
 </body>
 
 </html>
+
